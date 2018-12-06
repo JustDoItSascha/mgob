@@ -16,7 +16,7 @@ func dump(plan config.Plan, tmpPath string, ts time.Time) (string, string, error
 	archive := fmt.Sprintf("%v/%v-%v.gz", tmpPath, plan.Name, ts.Unix())
 	log := fmt.Sprintf("%v/%v-%v.log", tmpPath, plan.Name, ts.Unix())
 
-	dump := fmt.Sprintf("mongodump --archive=%v --gzip --host %v --port %v ",
+	dump := fmt.Sprintf("mongodump --archive=%v --gzip ",
 		archive, plan.Target.Host, plan.Target.Port)
 	if plan.Target.Database != "" {
 		dump += fmt.Sprintf("--db %v ", plan.Target.Database)
